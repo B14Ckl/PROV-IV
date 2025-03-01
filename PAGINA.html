@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio Web con Tablas PROG IV</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        td:hover {
+            background-color: #f0f0f0;
+        }
+        .contenido {
+            display: none; 
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .activo {
+            display: block; 
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td onclick="mostrarContenido('inicio')">Inicio</td>
+        <td onclick="mostrarContenido('galeria')">Galería</td>
+        <td onclick="mostrarContenido('nosotros')">Nosotros</td>
+        <td onclick="mostrarContenido('noticias')">Noticias</td>
+    </tr>
+</table>
+
+
+<div id="inicio" class="contenido">
+    <h2>Contenido de Inicio</h2>
+    <p>Este es el inicio de mi página, puedes ver que es algo simple pero puedes navegar entre diferentes secciones y ver su respectivo contenido</p>
+    <img src="https://i.blogs.es/389033/programming/1366_2000.jpg" alt="Descripción" width="650" height="550">
+</div>
+
+<div id="galeria" class="contenido">
+    <h2>Contenido de Galería</h2>
+    <img src="https://fotos.perfil.com/2024/09/09/ford-mustang-shelby-gt500-code-red-1868889.jpg" alt="Descripción" width="250" height="150">
+    <img src="https://www.periodistadigital.com/wp-content/uploads/2018/05/culo-2-pd.jpg" alt="Descripción" width="250" height="150">
+    <img src="https://www.blogdelfotografo.com/wp-content/uploads/2014/08/61.jpg" alt="Descripción" width="250" height="150">
+    <img src="https://assets.xboxservices.com/assets/af/30/af307f7f-e06d-470b-97e9-e8d40d0f2eb5.jpg?n=474774741_Super-Hero-1400_1920x1080_01.jpg" alt="Descripción" width="250" height="150">
+    <img src="https://i.blogs.es/8094a4/boeing-ngad/1366_2000.jpeg" alt="Descripción" width="250" height="150">
+</div>
+
+<div id="nosotros" class="contenido">
+    <h2>Contenido de Nosotros</h2>
+    <p>Estudiante de la Universidad de Manizales, progresando si sae socio, como fue pues, que hay pa la cabeza, pal tintineo, pal tik tik</p>
+    <img src="https://i1.sndcdn.com/artworks-000120552265-ati5ar-t500x500.jpg" alt="Descripción" width="550" height="550">
+</div>
+
+<div id="noticias" class="contenido">
+    <h2>Contenido de Noticias</h2>
+    <article>
+        <h3>NVIDIA confirma el fallo en algunas de sus GPU RTX 5090 y 5070 Ti</h3>
+        <p>Fecha: 27/02/2025 17:27</p>
+        <img src="https://www.lavanguardia.com/andro4all/hero/2025/02/nvidia-confirma-el-fallo-en-algunas-de-sus-gpu-rtx-5090-y-5070-ti.jpg?width=1200&aspect_ratio=16:9" alt="Descripción" width="550" height="450">
+        <p>NVIDIA ha confirmado recientemente un problema técnico en algunas de sus nuevas tarjetas gráficas RTX 5090 y RTX 5090 Ti. Esta situación ha generado preocupación entre los usuarios que han decidido apostar por estas tarjetas gráficas de alta gama. La información que llega de la mano de TechRadar explica lo ocurrido con estas tarjetas gráficas de NVIDIA y todo lo que pueden hacer los usuarios.</p>
+        <p>¿Qué ha pasado con las NVIDIA RTX 5090 y RTX 5090 Ti? Lo que se puede leer es que algunas unidades de ambas gráficas habrían llegado a manos de los usuarios con un fallo técnico que, aunque no es drástico, es cuestionable. Varios usuarios se han encontrado con que sus nuevas NVIDIA RTX 5090 y RTX 5090 no cuentan con todas las unidades de renderizado que deberían.</p>
+        <p>Quejas de usuarios al encontrarse fallos en sus tarjetas gráficas NVIDIA RTX 5090 y RTX 5090 Ti</p>
+        <p>Sí, resulta extraño que este error pueda existir. Para entender mejor la situación, hay que saber que las NVIDIA RTX 5090 cuentan con 178 unidades de renderizado. Esta cifra no puede variar, pero ha ocurrido y los usuarios han recibido gráficas de NVIDA con solo 168 unidades de renderizado y, por lo tanto, con un fallo de producción.
+
+            NVIDIA explica que esta situación es verídica, siendo un problema para los usuarios afectados. Eso sí, no se trata de una situación común. De hecho, la empresa de tarjetas gráficas ha indicado que el error es poco frecuente y que solo afecta a menos del 0,5% de esta nueva hornada de tarjetas gráficas.</p>
+    </article>
+
+    <article>
+        <h3>Colombia se consolida como el tercer país de Latinoamérica en ventas de vehículos eléctricos</h3>
+        <p>Fecha: 04 Feb, 2025 04:24 p.m.</p>
+        <p>El sector automotor en Colombia cerró el 2024 con cifras alentadoras y expectativas de crecimiento para el 2025. Durante el periodo, se registraron un total de 200.953 vehículos nuevos, lo que representó un incremento del 7,9% en comparación con el mismo periodo del 2023. A pesar de los desafíos económicos, la industria logró mostrar signos de recuperación y los gremios del sector proyectan que en 2025 las matrículas de vehículos alcancen las 220.000 unidades.
+
+        Según la Cámara de la Industria Automotriz de la Andi y Fenalco, 2024 fue un año complejo, marcado por factores como el bajo crecimiento económico, la inflación y las altas tasas de interés. “La industria automotriz se mostró resiliente y comprometida a continuar en el país con más fuerza en el 2024. Confiamos en que este 2025 traerá oportunidades para fortalecer la competitividad del sector, estimular el mercado y afianzar la confianza de inversionistas y consumidores”, expresó Karol García, directora de la Cámara de la Industria Automotriz de la Andi.</p>
+        <img src="https://www.infobae.com/resizer/v2/TLMPDFG4XOOMP3TNZC4K6UTZTY.jpg?auth=609b283af98754a213ef265e7f9df71a3308c9e1070e7eba35f47ba203d7bba6&smart=true&width=1200&height=800&quality=85" alt="Descripción" width="550" height="500">
+        <p>Uno de los hitos más relevantes del sector en 2024 fue el aumento en la venta de vehículos eléctricos e híbridos. Los vehículos a gasolina continuaron siendo los más vendidos, con una participación del 57,8%, seguidos por los híbridos con un 21,2% del mercado. Los eléctricos, aunque aún representan una porción menor, continúan con un crecimiento sostenido y alcanzaron un 4,6% del total de matrículas registradas en 2024.
+
+            Este incremento permitió que el parque automotor de vehículos eléctricos cerrara el año con 20.392 unidades, un crecimiento de más del 150% respecto al año anterior. Con estas cifras, Colombia se consolidó como el tercer país de Latinoamérica con más vehículos eléctricos matriculados, después de Brasil y México.
+            
+            Los líderes gremiales del sector manifestaron su interés en seguir trabajando junto con el Gobierno para impulsar políticas que fomenten la modernización del parque automotor y faciliten el acceso a tecnologías más limpias. “Esperamos de la mano del Gobierno poder seguir avanzando en políticas que fortalezcan el entorno de negocios, promuevan la modernización del parque automotor y faciliten el acceso a tecnologías más limpias y eficientes en Colombia”, indicó García.</p>
+    </article>
+</div>
+
+
+<script>
+    function mostrarContenido(id) {
+        
+        var contenidos = document.getElementsByClassName("contenido");
+        for (var i = 0; i < contenidos.length; i++) {
+            contenidos[i].classList.remove("activo");
+        }
+
+        
+        var contenido = document.getElementById(id);
+        if (contenido) {
+            contenido.classList.add("activo");
+        }
+    }
+</script>
+
+</body>
+</html>
