@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Capturas de Pokémon</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capturas</h1>
+    
+    <!-- Capturar Pokémon -->
+    <form id="capturarPokemon">
+        <input type="text" placeholder="Cédula Usuario" id="usuarioCedula" required>
+        <input type="number" placeholder="ID Pokémon" id="pokemonId" required>
+        <button type="submit">Capturar</button>
+    </form>
+
+    <!-- Listar Capturas por Usuario -->
+    <input type="text" placeholder="Cédula Usuario" id="cedulaListar">
+    <button onclick="listarCapturas()">Listar Capturas</button>
+    <table id="tablaCapturas">
+        <thead>
+            <tr>
+                <th>ID Captura</th>
+                <th>Pokémon ID</th>
+                <th>Usuario ID</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.getElementById('capturarPokemon').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const captura = {
+                usuarioCedula: document.getElementById('usuarioCedula').value,
+                pokemonId: document.getElementById('pokemonId').value
+            };
+
+            const response = await fetch('http://localhost:3000/api/captura/capturar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(captura)
+            });
+            const data = await response.json();
+            alert(data.message || 'Pokémon capturado!');
+        });
+
+        async function listarCapturas() {
+            const cedula = document.getElementById('cedulaListar').value;
+            const response = await fetch(`http://localhost:3000/api/captura/listar/${cedula}`);
+            const capturas = await response.json();
+            const tbody = document.querySelector('#tablaCapturas tbody');
+            tbody.innerHTML = '';
+
+            capturas.resultado.forEach(captura => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${captura.id}</td>
+                    <td>${captura.pokemonId}</td>
+                    <td>${captura.usuarioCedula}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

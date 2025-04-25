@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Pokémon</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokémon</h1>
+    
+    <!-- Registrar Pokémon -->
+    <form id="registrarPokemon">
+        <input type="text" placeholder="Nombre" id="nombre" required>
+        <input type="text" placeholder="Tipo" id="tipo" required>
+        <input type="text" placeholder="Poder" id="poder" required>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <!-- Listar Pokémon -->
+    <button onclick="listarPokemones()">Listar Pokémon</button>
+    <table id="tablaPokemon">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Poder</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.getElementById('registrarPokemon').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const pokemon = {
+                nombre: document.getElementById('nombre').value,
+                tipo: document.getElementById('tipo').value,
+                poder: document.getElementById('poder').value
+            };
+
+            const response = await fetch('http://localhost:3000/api/pokemon/registrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(pokemon)
+            });
+            const data = await response.json();
+            alert(data.message || 'Pokémon registrado!');
+        });
+
+        async function listarPokemones() {
+            const response = await fetch('http://localhost:3000/api/pokemon/listar');
+            const pokemones = await response.json();
+            const tbody = document.querySelector('#tablaPokemon tbody');
+            tbody.innerHTML = '';
+
+            pokemones.resultado.forEach(pokemon => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${pokemon.id}</td>
+                    <td>${pokemon.nombre}</td>
+                    <td>${pokemon.tipo}</td>
+                    <td>${pokemon.poder}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

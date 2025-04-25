@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    
+    <!-- Registrar Usuario -->
+    <form id="registrarUsuario">
+        <h2>Registrar Usuario</h2>
+        <input type="text" placeholder="Cédula" id="cedula" required>
+        <input type="email" placeholder="Email" id="email" required>
+        <input type="text" placeholder="Nombre" id="nombre" required>
+        <input type="number" placeholder="Edad" id="edad" required>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <!-- Listar Usuarios -->
+    <button onclick="listarUsuarios()">Listar Usuarios</button>
+    <table id="tablaUsuarios">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.getElementById('registrarUsuario').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const usuario = {
+                cedula: document.getElementById('cedula').value,
+                email: document.getElementById('email').value,
+                nombre: document.getElementById('nombre').value,
+                edad: document.getElementById('edad').value
+            };
+
+            const response = await fetch('http://localhost:3000/api/usuarios/registrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(usuario)
+            });
+            const data = await response.json();
+            alert(data.message || 'Usuario registrado!');
+        });
+
+        async function listarUsuarios() {
+            const response = await fetch('http://localhost:3000/api/usuarios/listar');
+            const usuarios = await response.json();
+            const tbody = document.querySelector('#tablaUsuarios tbody');
+            tbody.innerHTML = '';
+
+            usuarios.resultado.forEach(usuario => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${usuario.cedula}</td>
+                    <td>${usuario.nombre}</td>
+                    <td>${usuario.email}</td>
+                    <td>${usuario.edad}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
